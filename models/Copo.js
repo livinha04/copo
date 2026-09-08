@@ -1,50 +1,42 @@
 class Copo {
-    constructor(raioMaior, raioMenor, altura){
+    constructor(raioMaior, raioMenor, altura) {
         this.raioMaior = raioMaior;
         this.raioMenor = raioMenor;
         this.altura = altura;
     }
 
-
-    calcularGeratriz(){
+    calcularGeratriz() {
         return Math.sqrt(
             this.altura ** 2 +
             (this.raioMaior - this.raioMenor) ** 2
         );
     }
 
-
-    calcularAreaBaseMenor(){
+    calcularAreaBaseMenor() {
         return Math.PI * this.raioMenor ** 2;
     }
 
-
-    calcularAreaBaseMaior(){
+    calcularAreaBaseMaior() {
         return Math.PI * this.raioMaior ** 2;
     }
 
-
-    calcularAreaLateral(){
+    calcularAreaLateral() {
         const geratriz = this.calcularGeratriz();
 
-        return Math.PI *
-            geratriz *
+        return Math.PI * geratriz *
             (this.raioMaior + this.raioMenor);
     }
 
-
-    calcularVolume(){
-        return (
-            Math.PI * this.altura / 3
-        ) * (
-            this.raioMaior ** 2 +
-            this.raioMaior * this.raioMenor +
-            this.raioMenor ** 2
-        );
+    calcularVolume() {
+        return (Math.PI * this.altura / 3) *
+            (
+                this.raioMaior ** 2 +
+                this.raioMaior * this.raioMenor +
+                this.raioMenor ** 2
+            );
     }
 
-
-    classificarVolume(){
+    classificarVolume() {
         const volume = this.calcularVolume();
 
         if (volume < 180) {
@@ -56,12 +48,11 @@ class Copo {
         }
     }
 
-
-    calcularAreaTotal(){
+    calcularAreaTotal() {
         const areaBaseMaior = this.calcularAreaBaseMaior();
         const areaBaseMenor = this.calcularAreaBaseMenor();
         const areaLateral = this.calcularAreaLateral();
-        
+
         return areaBaseMaior + areaBaseMenor + areaLateral;
     }
 }
